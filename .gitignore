@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/web-logbook
+web-logbook.so
+web-logbook.dylib
+web-logbook.dll
+web-logbook.a
+web-logbook.lib
+web-logbook-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
+logbook.sqlite

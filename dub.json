@@ -1,0 +1,17 @@
+{
+	"authors": [
+		"Andrew Lalis"
+	],
+	"copyright": "Copyright © 2023, Andrew Lalis",
+	"dependencies": {
+		"d-properties": "~>1.0.4",
+		"d2sqlite3": "~>1.0.0",
+		"handy-httpd": "~>7.6.4"
+	},
+	"subConfigurations": {
+        "d2sqlite3": "all-included"
+    },
+	"description": "A minimal D application.",
+	"license": "MIT",
+	"name": "web-logbook"
+}
