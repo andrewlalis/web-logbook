@@ -19,6 +19,9 @@ void main() {
 		if (props.has("port")) {
 			config.port = props.get("port").to!ushort;
 		}
+		if (props.has("workers")) {
+			config.workerPoolSize = props.get("workers").to!size_t;
+		}
 	}
 	initDb();
 	HttpServer server = new HttpServer((ref HttpRequestContext ctx) {
