@@ -60,12 +60,15 @@ void handleVisitorLog(ref HttpRequestContext ctx) {
 		return;
 	}
 	string remoteAddress = ctx.request.getHeader("X-Forwarded-For");
+
+	// If the user has sent another log within the last minute, block this one.
 	LogEntry[] recentLogsByThisAddress = getRecentLogEntriesByRemoteAddress(remoteAddress);
 	SysTime now = Clock.currTime();
 	if (recentLogsByThisAddress.length > 0 && now - recentLogsByThisAddress[0].createdAt < minutes(1)) {
 		ctx.response.setStatus(HttpStatus.TOO_MANY_REQUESTS);
 		return;
 	}
+
 	insertLogEntry(remoteAddress, name, message);
 }
 
