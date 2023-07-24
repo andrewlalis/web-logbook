@@ -172,7 +172,7 @@ LogEntry[] getRecentLogEntriesByRemoteAddress(string remoteAddress) {
 	import std.array : Appender, appender;
 	Database db = Database("logbook.sqlite");
 	Statement stmt = db.prepare("SELECT * FROM log_entry WHERE remote_address = :addr ORDER BY created_at DESC LIMIT 10");
-	stmt.bind(0, remoteAddress);
+	stmt.bind(1, remoteAddress);
 	ResultRange results = stmt.execute();
 	Appender!(LogEntry[]) app = appender!(LogEntry[])();
 	foreach (Row row; results) {
