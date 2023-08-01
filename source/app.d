@@ -100,7 +100,7 @@ struct LogEntry {
 	JSONValue toJson() const {
 		JSONValue obj = JSONValue(string[string].init);
 		obj["id"] = JSONValue(id);
-		obj["createdAt"] = JSONValue(createdAt.toISOString());
+		obj["createdAt"] = JSONValue(createdAt.toISOExtString());
 		obj["remoteAddress"] = JSONValue(remoteAddress);
 		obj["name"] = JSONValue(name);
 		obj["message"] = JSONValue(message);
