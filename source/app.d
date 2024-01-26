@@ -1,5 +1,5 @@
 import handy_httpd;
-import handy_httpd.handlers.path_delegating_handler;
+import handy_httpd.handlers.path_handler;
 import slf4d;
 import d_properties;
 import d2sqlite3;
@@ -54,12 +54,12 @@ void handleVisitorLog(ref HttpRequestContext ctx) {
 		ctx.response.writeBodyString("Message is too long.");
 		return;
 	}
-	if (!ctx.request.hasHeader("X-Forwarded-For")) {
+	if (!ctx.request.headers.contains("X-Forwarded-For")) {
 		ctx.response.setStatus(HttpStatus.FORBIDDEN);
 		ctx.response.writeBodyString("Missing remote IP");
 		return;
 	}
-	string remoteAddress = ctx.request.getHeader("X-Forwarded-For");
+	string remoteAddress = ctx.request.headers.getFirst("X-Forwarded-For").orElseThrow();
 
 	// If the user has sent another log within the last minute, block this one.
 	LogEntry[] recentLogsByThisAddress = getRecentLogEntriesByRemoteAddress(remoteAddress);

@@ -6,7 +6,7 @@
 	"dependencies": {
 		"d-properties": "~>1.0.4",
 		"d2sqlite3": "~>1.0.0",
-		"handy-httpd": "~>7.7.0"
+		"handy-httpd": "~>8.1.0"
 	},
 	"subConfigurations": {
         "d2sqlite3": "all-included"
