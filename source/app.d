@@ -10,7 +10,8 @@ import std.json;
 import std.datetime;
 
 void main() {
-	ServerConfig config = ServerConfig.defaultValues();
+	ServerConfig config;
+	config.receiveBufferSize = 2048;
 	if (exists("application.properties")) {
 		Properties props = Properties("application.properties");
 		if (props.has("hostname")) {
